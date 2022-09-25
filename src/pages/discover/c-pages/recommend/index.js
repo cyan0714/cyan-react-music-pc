@@ -1,13 +1,17 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
-import { RecommendWraper } from './style'
+import CYTopBanner from './components/top-banner';
+import {
+  RecommendWraper,
+  Content,
+  RecommendLeft,
+  RecommendRight
+} from "./style";
 
-const CYRecommend = memo(() => {
+export default memo(function CYRecommend() {
   return (
     <RecommendWraper>
-      <div>CYRecommend</div>
+      <CYTopBanner/>
     </RecommendWraper>
   )
 })
-
-export default CYRecommend
