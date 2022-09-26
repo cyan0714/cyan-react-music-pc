@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   topBanners: [],
+  hotRecommends: [],
 }
 export const recommendSlice = createSlice({
   name: 'recommend',
@@ -10,7 +11,10 @@ export const recommendSlice = createSlice({
     setTopBanners(state, action) {
       state.topBanners = action.payload
     },
+    setHotRecommends(state, action) {
+      state.hotRecommends = action.payload
+    }
   },
 })
 
-export const { setTopBanners } = recommendSlice.actions
+export const { setTopBanners, setHotRecommends } = recommendSlice.actions

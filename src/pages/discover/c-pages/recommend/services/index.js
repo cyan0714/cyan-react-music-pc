@@ -7,7 +7,10 @@ export const recommendApi = createApi({
     getTopBanners: builder.query({
       query: (name) => `/banner`,
     }),
+    getHotRecommends: builder.query({
+      query: (name) => `/personalized`
+    })
   }),
 })
 
-export const { useGetTopBannersQuery } = recommendApi
+export const { useGetTopBannersQuery, useGetHotRecommendsQuery } = recommendApi
