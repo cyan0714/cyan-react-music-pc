@@ -17,7 +17,7 @@ export default memo(function CYAlbumCover(props) {
       </div>
       <div className='album-info'>
         <div className='name'>{info.name}</div>
-        <div className='artist'>{info.artist.name}</div>
+        <div className='artist single-row-ellip'>{info.artist.name}</div>
       </div>
     </AlbumWrapper>
   )

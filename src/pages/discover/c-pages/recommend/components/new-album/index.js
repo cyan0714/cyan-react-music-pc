@@ -17,7 +17,7 @@ export default memo(function CYNewAlbum(props) {
   const { data } = useGetNewAlbumQuery({limit: 10, offset: 0 })
 
   useEffect(() => {
-    dispatch(setNewAlbum(data && data.result))
+    dispatch(setNewAlbum(data && data.weekData))
   }, [dispatch, data])
 
   return (

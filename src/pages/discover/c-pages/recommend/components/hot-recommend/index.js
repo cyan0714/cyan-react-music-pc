@@ -15,6 +15,7 @@ export default memo(function CYHotRecommend() {
   const history = useNavigate()
 
   const { data } = useGetHotRecommendsQuery()
+  console.log('dataR: ', data);
 
   useEffect(() => {
     dispatch(setHotRecommends(data && data.result))
