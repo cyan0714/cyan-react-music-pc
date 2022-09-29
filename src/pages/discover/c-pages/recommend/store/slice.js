@@ -4,9 +4,9 @@ const initialState = {
   topBanners: [],
   hotRecommends: [],
   newAlbum: [],
-  topUpList: {},
-  topNewList: {},
-  topOriginList: {},
+  topUpListObj: {},
+  topNewListObj: {},
+  topOriginListObj: {},
 }
 export const recommendSlice = createSlice({
   name: 'recommend',
@@ -22,13 +22,13 @@ export const recommendSlice = createSlice({
       state.newAlbum = action.payload
     },
     setTopUpList(state, action) {
-      state.topUpList = action.payload
+      state.topUpListObj = action.payload
     },
     setTopNewList(state, action) {
-      state.topNewList = action.payload
+      state.topNewListObj = action.payload
     },
     setTopOriginList(state, action) {
-      state.topOriginList = action.payload
+      state.topOriginListObj = action.payload
     },
   },
 })
@@ -37,7 +37,7 @@ export const {
   setTopBanners,
   setHotRecommends,
   setNewAlbum,
-  setTopUpList,
-  setTopNewList,
-  setTopOriginList,
+  setTopUpListObj,
+  setTopNewListObj,
+  setTopOriginListObj,
 } = recommendSlice.actions
