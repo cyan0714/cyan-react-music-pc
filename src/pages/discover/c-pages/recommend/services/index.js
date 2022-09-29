@@ -13,8 +13,19 @@ export const recommendApi = createApi({
     }),
     getNewAlbum: builder.query({
       query: (params) => `/top/album?limit=${params.limit}&offset=${params.offset}`
+    }),
+    // getTopList: builder.query({
+    //   query: () => `/toplist`
+    // }),
+    getTopList: builder.query({
+      query: (id) => `/playlist/detail?id=${id}`
     })
   }),
 })
 
-export const { useGetTopBannersQuery, useGetHotRecommendsQuery, useGetNewAlbumQuery } = recommendApi
+export const {
+  useGetTopBannersQuery,
+  useGetHotRecommendsQuery,
+  useGetNewAlbumQuery,
+  useGetTopListQuery
+} = recommendApi

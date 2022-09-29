@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import CYTopBanner from './components/top-banner';
 import CYHotRecommend from './components/hot-recommend';
 import CYNewAlbum from './components/new-album';
+import CYRankingList from './components/ranking-list';
 import {
   RecommendWraper,
   Content,
@@ -18,6 +19,7 @@ export default memo(function CYRecommend() {
         <RecommendLeft>
           <CYHotRecommend />
           <CYNewAlbum />
+          <CYRankingList />
         </RecommendLeft>
         <RecommendRight>
         </RecommendRight>

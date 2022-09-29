@@ -15,7 +15,7 @@ export default memo(function CYTopBanner() {
   const bannerRef = useRef()
 
   const { data } = useGetTopBannersQuery()
-  console.log('data', data)
+  // console.log('data', data)
 
   useEffect(() => {
     dispatch(setTopBanners(data && data.banners))

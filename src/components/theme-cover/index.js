@@ -6,7 +6,6 @@ import { ThemeCoverWrapper } from './style'
 
 export default memo(function CYThemeCover(props) {
   const { info, right } = props
-  console.log('info: ', info);
 
   return (
     <ThemeCoverWrapper right={right}>
