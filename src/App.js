@@ -5,6 +5,7 @@ import store from './store'
 
 import CYAppHeader from '@/components/app-header'
 import CYAppFooter from '@/components/app-footer'
+import CYAppPlayBar from '@/pages/player/app-play-bar';
 
 const App = memo(() => {
   return (
@@ -12,6 +13,7 @@ const App = memo(() => {
       <CYAppHeader></CYAppHeader>
       <Outlet></Outlet>
       <CYAppFooter></CYAppFooter>
+      <CYAppPlayBar></CYAppPlayBar>
     </Provider>
   )
 })

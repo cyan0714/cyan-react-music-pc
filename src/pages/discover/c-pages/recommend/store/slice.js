@@ -21,13 +21,13 @@ export const recommendSlice = createSlice({
     setNewAlbum(state, action) {
       state.newAlbum = action.payload
     },
-    setTopUpList(state, action) {
+    setTopUpListObj(state, action) {
       state.topUpListObj = action.payload
     },
-    setTopNewList(state, action) {
+    setTopNewListObj(state, action) {
       state.topNewListObj = action.payload
     },
-    setTopOriginList(state, action) {
+    setTopOriginListObj(state, action) {
       state.topOriginListObj = action.payload
     },
   },
