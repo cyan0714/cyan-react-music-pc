@@ -7,6 +7,7 @@ import { setCurrentLyricIndex, setPlaySequence } from '../store/slice'
 import { getPlayUrl, formatMinuteSecond } from '@/utils/format-utils'
 import { changePlaySongAction, getSongDetailAction } from '@/utils/action'
 
+import CYAppPlayPanel from '../app-play-panel'
 import { PlaybarWrapper, Control, PlayInfo, Operator } from './style'
 
 export default memo(function CYAppPlaybar() {
@@ -15,6 +16,8 @@ export default memo(function CYAppPlaybar() {
   const [currentTime, setCurrentTime] = useState(0)
   const [progress, setProgress] = useState(0)
   const [isChanging, setIsChanging] = useState(false)
+  const [showPanel, setShowPanel] = useState(false);
+
 
   const {
     currentSong,
@@ -155,11 +158,12 @@ export default memo(function CYAppPlaybar() {
           <div className='right sprite_playbar'>
             <button className='sprite_playbar btn volume'></button>
             <button className='sprite_playbar btn loop' onClick={e => dispatch(setPlaySequence(playSequence + 1)) }></button>
-            <button className='sprite_playbar btn playlist'></button>
+            <button className='sprite_playbar btn playlist' onClick={e => setShowPanel(!showPanel)}>{playList.length}</button>
           </div>
         </Operator>
       </div>
       <audio ref={audioRef} onTimeUpdate={timeUpdate} onEnded={timeEnded} />
+      {showPanel && <CYAppPlayPanel />}
     </PlaybarWrapper>
   )
 })

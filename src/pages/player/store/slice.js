@@ -318,6 +318,10 @@ export const playerSlice = createSlice({
       state.currentLyricIndex = action.payload
     },
     setPlaySequence(state, action) {
+      if (action.payload === 3) {
+        state.playSequence = 0
+        return
+      }
       state.playSequence = action.payload
     },
     setCurrentSongIndex(state, action) {
