@@ -3,8 +3,10 @@ import originAxios from 'axios';
 export default function request(option) {
 	return new Promise((resolve, reject) => {
 		const instance = originAxios.create({
-			baseURL: 'https://www.autumnfish.cn/',
-			timeout: 10000
+			// baseURL: 'https://www.autumnfish.cn/',
+      // baseURL: 'http://123.207.32.32:9001/',
+      baseURL: 'http://localhost:3000',
+      timeout: 10000,
 		});
 
 		instance.interceptors.response.use(response => {
@@ -13,7 +15,7 @@ export default function request(option) {
 			return err
 		})
 
-		instance(option).then(res => {
+    instance(option).then(res => {
 			resolve(res)
 		}).catch(err => {
 			reject(err)

@@ -2,8 +2,7 @@ import React, { useEffect, memo, useCallback } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { useGetHotRecommendsQuery } from '../../services'
-import { setHotRecommends } from '../../store/slice'
+import { fetchHotRecommendsAction } from '../../store/slice'
 
 import { RecommendWrapper } from './style'
 import CYRecommendHeader from '@/components/recommend-header'
@@ -14,12 +13,9 @@ export default memo(function CYHotRecommend() {
   const { recommend } = useSelector(state => state)
   const history = useNavigate()
 
-  const { data } = useGetHotRecommendsQuery()
-  // console.log('dataR: ', data);
-
   useEffect(() => {
-    dispatch(setHotRecommends(data && data.result))
-  }, [dispatch, data])
+    dispatch(fetchHotRecommendsAction())
+  }, [])
 
   const keywordClick = useCallback(
     keyword => {

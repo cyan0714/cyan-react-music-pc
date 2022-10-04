@@ -1,8 +1,7 @@
 import React, { memo, useEffect, useCallback, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { useGetTopBannersQuery } from '../../services'
-import { setTopBanners } from '../../store/slice'
+import {fetchTopBannersAction} from '../../store/slice';
 
 import { Carousel } from 'antd'
 import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
@@ -11,16 +10,13 @@ export default memo(function CYTopBanner() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const dispatch = useDispatch()
-  const { recommend } = useSelector(state => state)
   const bannerRef = useRef()
-
-  const { data } = useGetTopBannersQuery()
-  // console.log('data', data)
+  const { recommend } = useSelector(state => state)
 
   useEffect(() => {
-    dispatch(setTopBanners(data && data.banners))
-  }, [dispatch, data])
-
+    dispatch(fetchTopBannersAction())
+  }, [dispatch])
+  
   const bannerChange = useCallback((from, to) => {
     setCurrentIndex(to)
   }, [])
