@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import App from '../App'
 
@@ -28,9 +28,7 @@ export const router = createBrowserRouter([
       {
         path: 'discover',
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <CYDiscover />
-          </Suspense>
+          <CYDiscover />
         ),
         children: [
           {
@@ -39,77 +37,41 @@ export const router = createBrowserRouter([
           },
           {
             path: 'recommend',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYRecommend />
-              </Suspense>
-            ),
+            element: <CYRecommend />,
           },
           {
             path: 'album',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYAlbum />
-              </Suspense>
-            ),
+            element: <CYAlbum />,
           },
           {
             path: 'artist',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYArtist />
-              </Suspense>
-            ),
+            element: <CYArtist />,
           },
           {
             path: 'djradio',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYDjradio />
-              </Suspense>
-            ),
+            element: <CYDjradio />,
           },
           {
             path: 'ranking',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYRanking />
-              </Suspense>
-            ),
+            element: <CYRanking />,
           },
           {
             path: 'songs',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYSongs />
-              </Suspense>
-            ),
+            element: <CYSongs />,
           },
           {
             path: 'player',
-            element: (
-              <Suspense fallback={<div>Loading...</div>}>
-                <CYPlayer />
-              </Suspense>
-            ),
+            element: <CYPlayer />,
           },
         ],
       },
       {
         path: 'mine',
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <CYMine />
-          </Suspense>
-        ),
+        element: <CYMine />,
       },
       {
         path: 'friend',
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <CYFriend />
-          </Suspense>
-        ),
+        element: <CYFriend />,
       },
     ],
   },
