@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getTopBanners, getHotRecommends, getNewAlbum, getTopList } from '@/services/recommend'
+import { getTopBanners, getHotRecommends, getNewAlbum, getTopList, getArtistList } from '@/services/recommend'
 
 export const fetchTopBannersAction = createAsyncThunk("recommend/topBanners", async () => await getTopBanners())
 export const fetchHotRecommendsAction = createAsyncThunk("recommend/hotRecommends", async () => await getHotRecommends())
 export const fetchNewAlbumAction = createAsyncThunk("recommend/newAlbum", async (params) => await getNewAlbum(params))
 export const fetchTopListAction = createAsyncThunk("recommend/topList", async (params) => await getTopList(params))
+export const fetchSettleSingersAction = createAsyncThunk("recommend/settleSingers", async (params) => await getArtistList(5, 5001))
 
 const initialState = {
   topBanners: [],
@@ -13,6 +14,7 @@ const initialState = {
   topUpListObj: {},
   topNewListObj: {},
   topOriginListObj: {},
+  settleSingers: []
 }
 export const recommendSlice = createSlice({
   name: 'recommend',
@@ -36,6 +38,9 @@ export const recommendSlice = createSlice({
     setTopOriginListObj(state, action) {
       state.topOriginListObj = action.payload
     },
+    setSettleSingers(state, action) {
+      state.settleSingers = action.payload
+    }
   },
   extraReducers: {
     [fetchTopBannersAction.fulfilled](state, { payload }) {
@@ -59,6 +64,10 @@ export const recommendSlice = createSlice({
           state.topOriginListObj = payload.playlist
           break;
       }
+    },
+    [fetchSettleSingersAction.fulfilled](state, { payload }) {
+      console.log('p', payload);
+      state.settleSingers = payload.artists 
     }
   }
 })
@@ -70,4 +79,5 @@ export const {
   setTopUpListObj,
   setTopNewListObj,
   setTopOriginListObj,
+  setSettleSingers,
 } = recommendSlice.actions

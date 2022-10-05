@@ -26,3 +26,13 @@ export const getTopList = (params) => {
     params, // { id: '' }
   })
 }
+
+export const getArtistList = (limit, cat) => {
+  return request({
+    url: "/artist/list",
+    params: {
+      cat,
+      limit
+    }
+  })
+}
