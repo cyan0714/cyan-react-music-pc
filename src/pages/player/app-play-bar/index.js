@@ -56,7 +56,6 @@ export default memo(function CYAppPlaybar() {
 
   const play = useCallback(() => {
     dispatch(setIsPlaying(!isPlaying))
-    console.log('isPlaying', isPlaying);
     isPlaying
       ? audioRef.current.pause()
       : audioRef.current.play().catch(err => {
@@ -170,7 +169,7 @@ export default memo(function CYAppPlaybar() {
         </Operator>
       </div>
       <audio ref={audioRef} onTimeUpdate={timeUpdate} onEnded={timeEnded} />
-      {showPanel && <CYAppPlayPanel />}
+      {showPanel && <CYAppPlayPanel changePanelShow={(isShowPanel) => setShowPanel(isShowPanel)} />}
     </PlaybarWrapper>
   )
 })

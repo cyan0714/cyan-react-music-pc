@@ -3,7 +3,7 @@ import { useSelector, shallowEqual } from 'react-redux'
 
 import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
 
-export default memo(function CYPlayHeader() {
+export default memo(function CYPlayHeader(props) {
   const { playList, currentSong } = useSelector(state => ({
     playList: state.player.playList,
     currentSong: state.player.currentSong,
@@ -17,7 +17,10 @@ export default memo(function CYPlayHeader() {
           <button> <i className='sprite_playlist icon remove'></i> 清除 </button>
         </div>
       </HeaderLeft>
-      <HeaderRight>{currentSong.name}</HeaderRight>
+      <HeaderRight>
+        <span>{currentSong.name}</span>
+        <span className="close" onClick={() => props.changePanelShow(false)}>X</span>
+      </HeaderRight>
     </HeaderWrapper>
   )
 })

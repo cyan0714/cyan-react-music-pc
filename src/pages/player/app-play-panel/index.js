@@ -5,10 +5,10 @@ import CYPlayList from './components/play-list';
 import CYLyricPanel from './components/lyric-panel';
 import { PanelWrapper } from './style';
 
-export default memo(function HYAppPlayList() {
+export default memo(function CYAppPlayList(props) {
   return (
     <PanelWrapper>
-      <CYPlayHeader/>
+      <CYPlayHeader changePanelShow={(isShowPanel) => props.changePanelShow(isShowPanel)} />
       <div className="main">
         <img className="image" src="https://p4.music.126.net/qeN7o2R3_OTPhghmkctFBQ==/764160591569856.jpg" alt=""/>
         <CYPlayList/>

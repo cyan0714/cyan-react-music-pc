@@ -68,7 +68,6 @@ export const recommendSlice = createSlice({
       }
     },
     [fetchSettleSingersAction.fulfilled](state, { payload }) {
-      console.log('p', payload);
       state.settleSingers = payload.artists 
     }
   }

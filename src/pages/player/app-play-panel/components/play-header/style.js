@@ -48,8 +48,16 @@ export const HeaderLeft = styled.div`
 `
 
 export const HeaderRight = styled.div`
+  position: relative;
   flex: 1;
   text-align: center;
   color: #fff;
   font-size: 14px;
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    font-size: 16px;
+    cursor: pointer;
+  }
 `
