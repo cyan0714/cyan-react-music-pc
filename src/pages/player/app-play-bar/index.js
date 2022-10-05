@@ -1,5 +1,5 @@
 import React, { memo, useRef, useEffect, useState, useCallback } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Slider, message } from 'antd'
 
@@ -25,7 +25,13 @@ export default memo(function CYAppPlaybar() {
     currentLyricIndex,
     playList,
     playSequence,
-  } = useSelector(state => state.player)
+  } = useSelector(state => ({
+    currentSong: state.player.currentSong,
+    lyrics: state.player.lyrics,
+    currentLyricIndex: state.player.currentLyricIndex,
+    playList: state.player.playList,
+    playSequence: state.player.playSequence,
+  }), shallowEqual)
 
   const dispatch = useDispatch()
 

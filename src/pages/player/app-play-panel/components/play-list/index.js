@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual} from 'react-redux';
 import classNames from 'classnames';
 
 import { formatMinuteSecond } from '@/utils/format-utils';
@@ -7,8 +7,10 @@ import { formatMinuteSecond } from '@/utils/format-utils';
 import { PlayListWrapper } from './style';
 
 export default memo(function CYPlayList() {
-  const { playList, currentSongIndex } = useSelector(state => (state.player))
-
+  const { playList, currentSongIndex } = useSelector(state => ({
+    playList: state.player.playList,
+    currentSongIndex: state.player.currentSongIndex
+  }), shallowEqual)
   return (
     <PlayListWrapper>
       {

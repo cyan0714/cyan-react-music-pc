@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, memo } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual} from 'react-redux'
 
 import { fetchNewAlbumAction } from '../../store/slice'
 
@@ -10,12 +10,12 @@ import CYAlbumCover from '@/components/album-cover'
 
 export default memo(function CYNewAlbum(props) {
   const dispatch = useDispatch()
-  const { recommend } = useSelector(state => state)
+  const  newAlbum = useSelector(state => state.recommend.newAlbum, shallowEqual)
   const carouselRef = useRef()
 
   useEffect(() => {
     dispatch(fetchNewAlbumAction({limit: 10, offset: 0}))
-  }, [])
+  }, [dispatch])
 
   return (
     <AlbumWrapper>
@@ -29,7 +29,7 @@ export default memo(function CYNewAlbum(props) {
             {[0, 1].map(item => {
               return (
                 <div key={item} className='page'>
-                  {recommend.newAlbum
+                  {newAlbum
                     ?.slice(item * 5, (item + 1) * 5)
                     ?.map(item => {
                       return <CYAlbumCover key={item.id} info={item} />

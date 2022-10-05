@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useCallback, useState, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import {fetchTopBannersAction} from '../../store/slice';
 
@@ -11,7 +11,7 @@ export default memo(function CYTopBanner() {
 
   const dispatch = useDispatch()
   const bannerRef = useRef()
-  const { recommend } = useSelector(state => state)
+  const topBanners = useSelector(state => state.recommend.topBanners, shallowEqual)
 
   useEffect(() => {
     dispatch(fetchTopBannersAction())
@@ -22,8 +22,8 @@ export default memo(function CYTopBanner() {
   }, [])
 
   const bgImage =
-    recommend.topBanners?.[currentIndex] &&
-    recommend.topBanners?.[currentIndex].imageUrl + '?imageView&blur=40x20'
+    topBanners?.[currentIndex] &&
+    topBanners?.[currentIndex].imageUrl + '?imageView&blur=40x20'
 
   return (
     <BannerWrapper bgImage={bgImage}>
@@ -34,7 +34,7 @@ export default memo(function CYTopBanner() {
             effect='fade'
             beforeChange={bannerChange}
             ref={bannerRef}>
-            {recommend.topBanners?.map((item, index) => {
+            {topBanners?.map((item, index) => {
               return (
                 <div className='banner-item' key={item.imageUrl}>
                   <img

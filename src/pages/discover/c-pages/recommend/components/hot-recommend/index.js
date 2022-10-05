@@ -10,12 +10,12 @@ import CYThemeCover from '@/components/theme-cover'
 
 export default memo(function CYHotRecommend() {
   const dispatch = useDispatch()
-  const { recommend } = useSelector(state => state)
+  const hotRecommends = useSelector(state => state.recommend.hotRecommends, shallowEqual)
   const history = useNavigate()
 
   useEffect(() => {
     dispatch(fetchHotRecommendsAction())
-  }, [])
+  }, [dispatch])
 
   const keywordClick = useCallback(
     keyword => {
@@ -33,7 +33,7 @@ export default memo(function CYHotRecommend() {
         keywordClick={keywordClick}
       />
       <div className='recommend-list'>
-        {recommend.hotRecommends?.slice(0, 8).map((item, index) => {
+        {hotRecommends?.slice(0, 8).map((item, index) => {
           return <CYThemeCover info={item} key={item.id} />
         })}
       </div>

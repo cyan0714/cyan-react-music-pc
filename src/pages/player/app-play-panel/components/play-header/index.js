@@ -1,10 +1,13 @@
 import React, { memo } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
 
 import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
 
 export default memo(function CYPlayHeader() {
-  const { playList, currentSong } = useSelector(state => state.player)
+  const { playList, currentSong } = useSelector(state => ({
+    playList: state.player.playList,
+    currentSong: state.player.currentSong,
+  }), shallowEqual)
   return (
     <HeaderWrapper>
       <HeaderLeft>

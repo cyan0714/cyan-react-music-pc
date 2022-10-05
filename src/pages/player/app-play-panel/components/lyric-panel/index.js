@@ -1,5 +1,5 @@
 import React, { memo, useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import classNames from 'classnames';
 
 import { scrollTo } from "@/utils/ui-helper";
@@ -7,7 +7,10 @@ import { scrollTo } from "@/utils/ui-helper";
 import { PannelWrapper } from './style';
 
 export default memo(function CYLyricPanel() {
-  const { lyrics, currentLyricIndex } = useSelector(state => state.player)
+  const { lyrics, currentLyricIndex } = useSelector(state => ({
+    lyrics: state.player.lyrics,
+    currentLyricIndex: state.player.currentLyricIndex,
+  }), shallowEqual)
   const panelRef = useRef();
 
   useEffect(() => {

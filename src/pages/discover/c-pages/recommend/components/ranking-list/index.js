@@ -1,5 +1,5 @@
 import React, { useEffect, memo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 import { fetchTopListAction } from '../../store/slice'
 
@@ -9,7 +9,11 @@ import { RankingWrapper } from './style'
 
 export default memo(function CYRankingList() {
   const dispatch = useDispatch()
-  const { recommend } = useSelector(state => state)
+  const { topUpListObj, topNewListObj, topOriginListObj } = useSelector(state => ({
+    topUpListObj: state.recommend.topUpListObj,
+    topNewListObj: state.recommend.topNewListObj,
+    topOriginListObj: state.recommend.topOriginListObj
+  }), shallowEqual)
 
   useEffect(() => {
     dispatch(fetchTopListAction({ id: 19723756 })) // 飙升榜
@@ -21,9 +25,9 @@ export default memo(function CYRankingList() {
     <RankingWrapper>
       <CYRecommendHeader title='榜单' moreLink='/discover/ranking' />
       <div className='tops'>
-        <CYTopRanking info={recommend.topUpListObj} />
-        <CYTopRanking info={recommend.topNewListObj} />
-        <CYTopRanking info={recommend.topOriginListObj} />
+        <CYTopRanking info={topUpListObj} />
+        <CYTopRanking info={topNewListObj} />
+        <CYTopRanking info={topOriginListObj} />
       </div>
     </RankingWrapper>
   )
