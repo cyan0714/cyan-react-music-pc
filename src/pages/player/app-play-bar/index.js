@@ -3,29 +3,29 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Slider, message } from 'antd'
 
-import { setCurrentLyricIndex, setPlaySequence } from '../store/slice'
-import { getPlayUrl, formatMinuteSecond } from '@/utils/format-utils'
+import { setCurrentLyricIndex, setPlaySequence, setIsPlaying } from '../store/slice'
+import { getPlayUrl, formatMinuteSecond, getSizeImage } from '@/utils/format-utils'
 import { changePlaySongAction, getSongDetailAction } from '@/utils/action'
 
 import CYAppPlayPanel from '../app-play-panel'
 import { PlaybarWrapper, Control, PlayInfo, Operator } from './style'
 
 export default memo(function CYAppPlaybar() {
-  const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [progress, setProgress] = useState(0)
   const [isChanging, setIsChanging] = useState(false)
   const [showPanel, setShowPanel] = useState(false);
 
-
   const {
+    isPlaying,
     currentSong,
     lyrics,
     currentLyricIndex,
     playList,
     playSequence,
   } = useSelector(state => ({
+    isPlaying: state.player.isPlaying,
     currentSong: state.player.currentSong,
     lyrics: state.player.lyrics,
     currentLyricIndex: state.player.currentLyricIndex,
@@ -46,22 +46,23 @@ export default memo(function CYAppPlaybar() {
     audioRef.current
       .play()
       .then(res => {
-        setIsPlaying(true)
+        dispatch(setIsPlaying(true))
       })
       .catch(err => {
-        setIsPlaying(false)
+        dispatch(setIsPlaying(false))
       })
     setDuration(currentSong.dt)
-  }, [currentSong])
+  }, [dispatch, currentSong])
 
   const play = useCallback(() => {
-    setIsPlaying(!isPlaying)
+    dispatch(setIsPlaying(!isPlaying))
+    console.log('isPlaying', isPlaying);
     isPlaying
       ? audioRef.current.pause()
       : audioRef.current.play().catch(err => {
-          setIsPlaying(false)
+          dispatch(setIsPlaying(false))
         })
-  }, [isPlaying])
+  }, [dispatch, isPlaying])
 
   const timeUpdate = e => {
     const currentTime = e.target.currentTime
@@ -134,7 +135,7 @@ export default memo(function CYAppPlaybar() {
         <PlayInfo>
           <div className='image'>
             <NavLink to='/discover/player'>
-              <img src='https://p2.music.126.net/OVkXDNmbk2uj6wE1KTZIwQ==/109951165203334337.jpg?param=34y34' alt='' />
+              <img src={getSizeImage(currentSong.al.picUrl, 30)} alt='' />
             </NavLink>
           </div>
           <div className='info'>

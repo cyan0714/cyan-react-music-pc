@@ -1,6 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import { getSimiPlaylist, getSimiSong, } from '@/services/player'
+
+export const fetchSimiPlayListAction = createAsyncThunk("recommend/topBanners", async (id) => await getSimiPlaylist(id))
+export const fetchSimiSongAction = createAsyncThunk("recommend/hotRecommends", async (id) => await getSimiSong(id))
 
 const initialState = {
+  isPlaying: false,
   playList: [
     {
       name: '有何不可',
@@ -305,6 +310,9 @@ export const playerSlice = createSlice({
   name: 'player',
   initialState,
   reducers: {
+    setIsPlaying(state, action) {
+      state.isPlaying = action.payload
+    },
     setCurrentSong(state, action) {
       state.currentSong = action.payload
     },
@@ -334,9 +342,18 @@ export const playerSlice = createSlice({
       state.simiSongs = action.payload
     }
   },
+  extraReducers: {
+    [fetchSimiPlayListAction.fulfilled](state, { payload }) {
+      state.simiPlaylist = payload.playlists
+    },
+    [fetchSimiSongAction.fulfilled](state, { payload }) {
+      state.simiSongs = payload.songs
+    }
+  }
 })
 
 export const {
+  setIsPlaying,
   setCurrentSong,
   setPlayList,
   setLyrics,

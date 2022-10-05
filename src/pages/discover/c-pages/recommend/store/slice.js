@@ -63,6 +63,8 @@ export const recommendSlice = createSlice({
         case '原创榜':
           state.topOriginListObj = payload.playlist
           break;
+        default:
+          break;
       }
     },
     [fetchSettleSingersAction.fulfilled](state, { payload }) {
