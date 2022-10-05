@@ -15,6 +15,7 @@ const CYPlayer = React.lazy(() => import('@/pages/player'))
 
 const CYMine = React.lazy(() => import('@/pages/mine'))
 const CYFriend = React.lazy(() => import('@/pages/friend'))
+const NotFound = React.lazy(() => import('@/pages/not-found'))
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
         path: 'friend',
         element: <CYFriend />,
       },
+      {
+        path: '*',
+        element: <NotFound />,
+      }
     ],
   },
 ])
