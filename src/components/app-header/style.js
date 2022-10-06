@@ -60,7 +60,7 @@ export const HeaderLeft = styled.div`
         background: #000;
       }
 
-     .active .icon {
+      .active .icon {
         position: absolute;
         display: inline-block;
         width: 12px;
@@ -75,6 +75,7 @@ export const HeaderLeft = styled.div`
 `
 
 export const HeaderRight = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   color: #ccc;
@@ -99,5 +100,22 @@ export const HeaderRight = styled.div`
     border: 1px solid #666;
     border-radius: 16px;
     margin: 0 16px;
+  }
+
+  .search-result-wrapper {
+    display: ${(props) => props.isShowSearchResultWrapper ? 'block' : 'none'}; 
+    position: absolute;
+    top: 60px;
+    left: 0;
+    height: 190px;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 6px;
+    z-index: 2;
+    color: #000;
+    padding: 8px 20px;
+    ::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
   }
 `

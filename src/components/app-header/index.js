@@ -1,12 +1,17 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
+import { debounce } from 'lodash'
 
+import { searchKeywords } from '@/services/common'
 import { headerLinks } from '@/services/local-data'
 import { AppHeaderWrapper, HeaderLeft, HeaderRight } from './style'
 
 const CYAppHeader = memo(() => {
+  const [songs, setSongs] = useState([])
+  const [isShowSearchResultWrapper, setIsShowSearchResultWrapper] = useState(false)
+
   const showItem = (item, index) => {
     if (index < 3) {
       return (
@@ -23,6 +28,30 @@ const CYAppHeader = memo(() => {
       )
     }
   }
+
+  const onChange = useCallback(
+    debounce(e => {
+      const value = e.target.value
+      searchKeywords(value).then(res => {
+        setSongs(res.result.songs)
+        setIsShowSearchResultWrapper(true)
+      })
+    }, 500),
+    []
+  )
+
+  const content = (
+    <div>
+      {songs.map((song, index) => {
+        return (
+          <p key={song.id}>
+            <span>{song.name}</span> - 
+            <span> {song.ar[0].name || ''}</span>
+          </p>
+        )
+      })}
+    </div>
+  )
 
   return (
     <AppHeaderWrapper>
@@ -41,14 +70,18 @@ const CYAppHeader = memo(() => {
             })}
           </div>
         </HeaderLeft>
-        <HeaderRight>
+        <HeaderRight isShowSearchResultWrapper={isShowSearchResultWrapper}>
           <Input
             className='search'
             placeholder='音乐/视频/电台/用户'
+            onChange={e => onChange(e)}
+            onBlur={() => setIsShowSearchResultWrapper(false)}
+            onFocus={() => {songs.length > 0 && setIsShowSearchResultWrapper(true)}}
             prefix={<SearchOutlined />}
           />
           <div className='center'>创作者中心</div>
           <div className=''>登录</div>
+          <div className='search-result-wrapper shadow'>{content}</div>
         </HeaderRight>
       </div>
       <div className='divider'></div>
