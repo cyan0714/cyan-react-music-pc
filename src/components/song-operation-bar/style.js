@@ -54,7 +54,7 @@ export const OperationBarWrapper = styled.div`
       display: inline-block;
       height: 31px;
       line-height: 31px;
-      padding: 0 7px 0 28px;
+      padding: 0 7px 0 25px;
       font-style: normal;
       font-size: 12px;
     }

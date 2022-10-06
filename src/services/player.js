@@ -35,3 +35,10 @@ export function getSimiSong(id) {
     }
   })
 }
+
+export const getComments = (params) => {
+  return request({
+    url: '/comment/music',
+    params // { id: '', limit: '', offset: '' }
+  })
+}
