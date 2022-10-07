@@ -1,13 +1,16 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
-import { AlbumWrapper } from './style'
+import CYHotAlbum from './components/hot-album';
+import CYAllAlbum from './components/all-album';
+import {
+  AlbumWrapper
+} from './style';
 
-const CYAlbum = memo(() => {
+export default memo(function CYAlbum() {
   return (
-    <AlbumWrapper>
-      <div>CYAlbum</div>
+    <AlbumWrapper className="wrap-v2">
+      <CYHotAlbum/>
+      <CYAllAlbum/>
     </AlbumWrapper>
   )
 })
-
-export default CYAlbum
