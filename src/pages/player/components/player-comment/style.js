@@ -27,14 +27,14 @@ export const EditComment = styled.div`
     
     .ant-input-textarea-show-count::after {
       position: absolute;
-      right: 0;
+      right: 60px;
       top: 76px;
     }
   }
 
   .commit-btn {
     position: absolute;
-    right: 60px;
+    right: 0;
     bottom: -29px;
     width: 58px;
     font-size: 13px;

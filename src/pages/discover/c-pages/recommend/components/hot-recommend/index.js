@@ -19,7 +19,7 @@ export default memo(function CYHotRecommend() {
 
   const keywordClick = useCallback(
     keyword => {
-      history.push({ pathname: '/discover/songs', cat: keyword })
+      history('/discover/songs')
     },
     [history]
   )

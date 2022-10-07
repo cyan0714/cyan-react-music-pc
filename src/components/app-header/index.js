@@ -1,8 +1,11 @@
-import React, { memo, useCallback, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { memo, useCallback, useState, useMemo } from 'react'
+import { useDispatch } from 'react-redux'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { debounce } from 'lodash'
+
+import { getSongDetailAction } from '@/utils/action'
 
 import { searchKeywords } from '@/services/common'
 import { headerLinks } from '@/services/local-data'
@@ -10,7 +13,10 @@ import { AppHeaderWrapper, HeaderLeft, HeaderRight } from './style'
 
 const CYAppHeader = memo(() => {
   const [songs, setSongs] = useState([])
-  const [isShowSearchResultWrapper, setIsShowSearchResultWrapper] = useState(false)
+  const [isShowSearchResultWrapper, setIsShowSearchResultWrapper] =
+    useState(false)
+  const dispatch = useDispatch()
+  const history = useNavigate()
 
   const showItem = (item, index) => {
     if (index < 3) {
@@ -29,24 +35,38 @@ const CYAppHeader = memo(() => {
     }
   }
 
-  const onChange = useCallback(
-    debounce(e => {
-      const value = e.target.value
-      searchKeywords(value).then(res => {
-        setSongs(res.result.songs)
-        setIsShowSearchResultWrapper(true)
+  const debounceSearch = useMemo(() =>
+    debounce(val => {
+      searchKeywords(val).then(res => {
+        const resSongs = res.result.songs
+        setSongs(resSongs || [])
+        if (resSongs) {
+          setIsShowSearchResultWrapper(true)
+        }
       })
     }, 500),
     []
   )
 
+  const onChange = useCallback(
+    e => {
+      const value = e.target.value
+      debounceSearch(value)
+    },
+    [debounceSearch]
+  )
+
+  const playMusic = id => {
+    dispatch(getSongDetailAction(id))
+    history('/discover/player')
+  }
+
   const content = (
     <div>
       {songs.map((song, index) => {
         return (
-          <p key={song.id}>
-            <span>{song.name}</span> - 
-            <span> {song.ar[0].name || ''}</span>
+          <p key={index} onClick={() => playMusic(song.id)}>
+            <span>{song.name}</span> - <span>{song.ar[0].name || ''}</span>
           </p>
         )
       })}
@@ -75,7 +95,7 @@ const CYAppHeader = memo(() => {
             className='search'
             placeholder='音乐/视频/电台/用户'
             onChange={e => onChange(e)}
-            onBlur={() => setIsShowSearchResultWrapper(false)}
+            onBlur={() => {setTimeout(() => setIsShowSearchResultWrapper(false), 100)}}
             onFocus={() => {songs.length > 0 && setIsShowSearchResultWrapper(true)}}
             prefix={<SearchOutlined />}
           />

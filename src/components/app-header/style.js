@@ -111,9 +111,10 @@ export const HeaderRight = styled.div`
     overflow: auto;
     background-color: #fff;
     border-radius: 6px;
-    z-index: 2;
+    z-index: 200;
     color: #000;
     padding: 8px 20px;
+    cursor: pointer;
     ::-webkit-scrollbar {
       display: none; /* Chrome Safari */
     }
