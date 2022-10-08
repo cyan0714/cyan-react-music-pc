@@ -13,7 +13,7 @@ const initialState = {
 export const albumSlice = createSlice({
   name: 'album',
   initialState,
-  reducer: {
+  reducers: {
     setHotAlbums(state, { payload }) {
       state.hotAlbums = payload
     },

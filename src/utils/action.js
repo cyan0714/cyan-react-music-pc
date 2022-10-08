@@ -1,4 +1,4 @@
-import { getSongDetail, getLyric, getSimiPlaylist, getSimiSong } from '@/services/player';
+import { getSongDetail, getLyric } from '@/services/player';
 import {
   setCurrentSongIndex,
   setCurrentSong,
