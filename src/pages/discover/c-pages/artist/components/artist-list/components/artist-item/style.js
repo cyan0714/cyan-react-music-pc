@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const ItemWrapper = styled.div`
   width: 130px;
-  margin-top: 15px;
+  &:nth-child(-n + 10) {
+    .info {
+      margin: 10px 0;
+    }
+  }
 
   .image {
     img {
@@ -12,13 +16,14 @@ export const ItemWrapper = styled.div`
   }
 
   .info {
-    margin: 10px 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    line-height: 34px;
 
     .name {
       cursor: pointer;
-      
+
       &:hover {
         color: red;
         text-decoration: underline;

@@ -17,7 +17,7 @@ export default memo(function CYArtistItemV1(props) {
         )
       }
       <div className="info">
-        <span className="name">{info.name}</span>
+        <span className="name single-row-ellip">{info.name}</span>
         <i className="sprite_icon2 icon"></i>
       </div>
     </ItemWrapper>

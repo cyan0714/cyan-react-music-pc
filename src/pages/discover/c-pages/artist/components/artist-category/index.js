@@ -25,14 +25,13 @@ export default memo(function CYArtistCategory(props) {
   const renderArtist = (artists, area) => {
     return (
       <div>
-        {artists.map((item, index) => {
-          const isSelect =
-            currentArea === area && currentType.type === item.type
+        {artists.map((artist, index) => {
+          const isSelect = currentArea === area && currentType.type === artist.type
           return (
             <CategoryItem
-              key={item.name}
+              key={artist.name}
               className={classNames({ active: isSelect })}>
-              <span onClick={e => selectArtist(area, item)}>{item.name}</span>
+              <span onClick={e => selectArtist(area, artist)}>{artist.name}</span>
             </CategoryItem>
           )
         })}
