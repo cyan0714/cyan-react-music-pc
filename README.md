@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# React18实战之云音乐项目
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 如果觉得不错，或者对你有帮助，点一个star~ cyan0714
 
-## Available Scripts
+## 灵感来自
 
-In the project directory, you can run:
+[coderwhy/hy-react-web-music](https://github.com/coderwhy/hy-react-web-music)
 
-### `npm start`
+[Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 项目简介
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+使用 React18 + Hooks + Redux Toolkit + React Router v6 编写的云音乐PC Web项目，接口来源于开源的接口，目前的接口是通过 clone [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 项目后本地起服务调用的，后续考虑将接口部署到服务器
 
-### `npm test`
+## 目前已完成的功能：
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+推荐页面：
 
-### `npm run build`
+* 轮播图
+* 热门推荐
+* 新碟上架
+* 榜单
+* 等等
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![推荐页面](./src/assets/imgs/readme/recommend1.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![推荐页面](./src/assets/imgs/readme/recommend2.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+歌曲播放：
 
-### `npm run eject`
+* 可以点击榜单中的歌曲进行播放；
+* 事实上其他页面只要将歌曲的 id 传入到 redux 中就可以，整个逻辑已经打通；
+* 做了歌曲的各种控制（暂停、播放、上一首、下一首、进度改变）；
+* 做了播放循序切换：顺序播放、随机播放、单曲循环；
+* 做了歌词的解析、展示、滚动；
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![歌曲播放](./src/assets/imgs/readme/playlist.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+歌手页面：
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* 各种歌手分类
+* 歌手字母分类、对应歌手展示；
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![歌手页面](./src/assets/imgs/readme/artist.png)
 
-## Learn More
+新碟上架页面：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* 热门新碟；
+* 全部新碟、分页展示；
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![新碟上架页面](./src/assets/imgs/readme/album.png)
 
-### Code Splitting
+歌曲播放页面：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* 歌曲搜索
+* 歌词展示
+* 相似歌曲
+* 包含这首歌的歌单
+* 最新评论
 
-### Analyzing the Bundle Size
+![歌曲播放页面](./src/assets/imgs/readme/player-page.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 待完成功能
+* 排行榜
+* 歌单
+* 主播电台
+* 等等
 
-### Making a Progressive Web App
+## 项目规范
+* 1.文件夹、文件名称统一小写、多个单词以连接符（-）连接；
+* 2.JavaScript 变量名称采用小驼峰标识，常量全部使用大写字母，组件采用大驼峰；
+* 3.CSS采用普通 CSS 和 styled-component 结合来编写（全局采用普通 CSS、局部采用 styled-component）;
+* 4.整个项目不再使用 class 组件，统一使用函数式组件，并且全面使用 Hooks；
+* 5.所有的函数式组件，为了避免不必要的渲染，全部使用 memo 进行包裹；
+* 6.组件内部的状态，使用 useState、useReducer；业务数据 90% 都放在redux中管理；
+* 7.redux 代码规范如下：
+  * redux 的封装不需要从头开始写，直接使用官方的 redux-toolkit
+  * 每个模块就是一个 slice，最后通过 configureStore 进行合并；
+  * 异步请求代码使用 redux-toolkit 的 createAsyncThunk；
+  * redux 直接采用 redux hooks 方式编写，不再使用 connect；
+* 9.网络请求采用 axios
+  * 对 axios 进行二次封装；
+  * 各个模块请求的 api 都会放到对应的请求文件中单独管理；
+* 10.项目使用 AntDesign
+  * 为了方便，部分地方会用到 AntDesign 中的组件；
+* 其他规范在项目中根据实际情况决定和编写；
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 项目运行
+**用前须知**：由于接口服务器还未部署，本项目的接口来源于[Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)的接口，要想使用接口，应先 clone 该项目，安装好依赖后，在终端输入 node app.js，服务就可以启动了。
 
-### Advanced Configuration
+clone项目：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+git clone https://github.com/cyan0714/cyan-react-music-pc.git
+```
 
-### Deployment
+安装项目依赖：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```shell
+npm install || yarn install || pnpm install
+```
 
-### `npm run build` fails to minify
+项目运行：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```shell
+npm start || yarn start || pnpm start
+```
+
+
+
