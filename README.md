@@ -10,7 +10,9 @@
 
 ## 项目简介
 
-使用 React18 + Hooks + Redux Toolkit + React Router v6 编写的云音乐PC Web项目，接口来源于开源的接口，目前的接口是通过 clone [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 项目后本地起服务调用的，后续考虑将接口部署到服务器
+* 该项目是使用 React18 + Hooks + Redux Toolkit + React Router v6 编写的云音乐PC Web项目
+* 项目中的样式代码大部分来自[coderwhy/hy-react-web-music](https://github.com/coderwhy/hy-react-web-music)
+* 接口来源于开源的接口，目前的接口是通过 clone [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 项目后本地起服务调用的，后续考虑将接口部署到服务器
 
 ## 目前已完成的功能：
 
@@ -22,9 +24,9 @@
 * 榜单
 * 等等
 
-![推荐页面](./src/assets/imgs/readme/recommend1.png)
+![推荐页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/recommend1.png)
 
-![推荐页面](./src/assets/imgs/readme/recommend2.png)
+![推荐页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/recommend2.png)
 
 歌曲播放：
 
@@ -34,21 +36,21 @@
 * 做了播放循序切换：顺序播放、随机播放、单曲循环；
 * 做了歌词的解析、展示、滚动；
 
-![歌曲播放](./src/assets/imgs/readme/playlist.png)
+![歌曲播放](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/playlist.png)
 
 歌手页面：
 
 * 各种歌手分类
 * 歌手字母分类、对应歌手展示；
 
-![歌手页面](./src/assets/imgs/readme/artist.png)
+![歌手页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/artist.png)
 
 新碟上架页面：
 
 * 热门新碟；
 * 全部新碟、分页展示；
 
-![新碟上架页面](./src/assets/imgs/readme/album.png)
+![新碟上架页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/album.png)
 
 歌曲播放页面：
 
@@ -58,7 +60,7 @@
 * 包含这首歌的歌单
 * 最新评论
 
-![歌曲播放页面](./src/assets/imgs/readme/player-page.png)
+![歌曲播放页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/player-page.png)
 
 ## 待完成功能
 * 排行榜
