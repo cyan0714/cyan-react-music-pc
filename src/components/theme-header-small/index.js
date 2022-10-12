@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 // local components
 import { HeaderWrapper } from './style'
 
-export default memo(props => {
+const CYThemeHeaderSmall = memo(props => {
   // props
   const { title, more } = props
 
@@ -37,5 +37,7 @@ CYThemeHeaderSmall.propTypes = {
   title: PropTypes.string.isRequired,
   more: PropTypes.string,
 }
+
+export default CYThemeHeaderSmall
 
 

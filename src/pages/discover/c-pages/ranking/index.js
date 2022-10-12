@@ -1,13 +1,29 @@
-import React, { memo } from 'react'
+import React, { useEffect, memo } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { RankingWrapper } from './style'
+import { getTops } from './store/slice'
 
-const CYRanking = memo(() => {
+import CYTopRanking from './components/top-ranking'
+import CYRankingHeader from './components/ranking-header'
+import CYRankingList from './components/ranking-list'
+import { RankingWrapper, RankingLeft, RankingRight } from './style'
+
+export default memo(props => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getTops())
+  }, [dispatch])
+
   return (
-    <RankingWrapper>
-      <div>CYRanking</div>
+    <RankingWrapper className='wrap-v2'>
+      <RankingLeft>
+        <CYTopRanking />
+      </RankingLeft>
+      <RankingRight>
+        <CYRankingHeader />
+        <CYRankingList />
+      </RankingRight>
     </RankingWrapper>
   )
 })
-
-export default CYRanking

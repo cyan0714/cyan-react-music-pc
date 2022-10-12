@@ -3,6 +3,7 @@ import { recommendSlice } from '@/pages/discover/c-pages/recommend/store/slice'
 import { albumSlice } from '@/pages/discover/c-pages/album/store/slice'
 import { artistSlice } from '@/pages/discover/c-pages/artist/store/slice'
 import { songsSlice } from '@/pages/discover/c-pages/songs/store/slice'
+import { rankingSlice } from '@/pages/discover/c-pages/ranking/store/slice'
 import { playerSlice } from '@/pages/player/store/slice'
 
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     album: albumSlice.reducer,
     artist: artistSlice.reducer,
     songs: songsSlice.reducer,
+    ranking: rankingSlice.reducer,
     player: playerSlice.reducer,
   },
 })
