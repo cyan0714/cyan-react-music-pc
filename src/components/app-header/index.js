@@ -9,12 +9,12 @@ import { getSongDetailAction } from '@/utils/action'
 
 import { searchKeywords } from '@/services/common'
 import { headerLinks } from '@/services/local-data'
+
 import { AppHeaderWrapper, HeaderLeft, HeaderRight } from './style'
 
 const CYAppHeader = memo(() => {
   const [songs, setSongs] = useState([])
-  const [isShowSearchResultWrapper, setIsShowSearchResultWrapper] =
-    useState(false)
+  const [isShowSearchResultWrapper, setIsShowSearchResultWrapper] = useState(false)
   const dispatch = useDispatch()
   const history = useNavigate()
 
@@ -28,9 +28,7 @@ const CYAppHeader = memo(() => {
       )
     } else {
       return (
-        <a href={item.link} target='_blank' rel='noopener noreferrer'>
-          {item.title}
-        </a>
+        <a href={item.link} target='_blank' rel='noopener noreferrer'>{item.title}</a>
       )
     }
   }
@@ -77,9 +75,7 @@ const CYAppHeader = memo(() => {
     <AppHeaderWrapper>
       <div className='wrap-v1 content'>
         <HeaderLeft>
-          <a className='logo sprite_01' href='#/'>
-            网易云音乐
-          </a>
+          <a className='logo sprite_01' href='#/'>网易云音乐</a>
           <div className='select-list'>
             {headerLinks.map((item, index) => {
               return (

@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-
 import { Pagination } from 'antd';
+
 import { PaginationWrapper } from './style';
 
-export default memo(function CYPagination(props) {
+export default memo(props => {
   const { currentPage, total, pageSize, onPageChange } = props;
 
   function itemRender(current, type, originalElement) {

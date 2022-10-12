@@ -1,20 +1,33 @@
-import React, { memo } from 'react'
-import { useDispatch } from 'react-redux';
+// third lib
+import React, { memo, useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+// third components
+
+// utils
 import { getSizeImage } from '@/utils/format-utils'
 import { getSongDetailAction } from '@/utils/action'
 
+// api
+
+// local components
 import { TopRankingWrapper } from './style'
 
-export default memo(function CYTopRanking(props) {
+export default memo(props => {
+  // props
   const { info = {} } = props
   const { tracks = [] } = info
-  const dispatch = useDispatch();
-  
+
+  // state-hooks
+
+  // redux-hooks
+  const dispatch = useDispatch()
+
+  // others
   const playMusic = (item) => {
     dispatch(getSongDetailAction(item.id));
   }
-  
+
   return (
     <TopRankingWrapper>
       <div className='header'>
@@ -53,3 +66,4 @@ export default memo(function CYTopRanking(props) {
     </TopRankingWrapper>
   )
 })
+

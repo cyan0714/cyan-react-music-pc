@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-
 import { Link } from 'react-router-dom'
+
 import { HeaderWrapper } from './style'
 
-const CYRecommendHeader = memo(function (props) {
+const CYRecommendHeader = memo(props => {
   const { title, keywords, moreLink, keywordClick } = props
 
   return (

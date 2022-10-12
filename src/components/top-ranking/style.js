@@ -6,7 +6,6 @@ export const TopRankingWrapper = styled.div`
   .header {
     height: 100px;
     display: flex;
-
     margin: 20px 0 0 20px;
 
     .image {

@@ -4,7 +4,7 @@ import { getSizeImage, getCount } from '@/utils/format-utils'
 
 import { ThemeCoverWrapper } from './style'
 
-export default memo(function CYThemeCover(props) {
+export default memo(props => {
   const { info, right } = props
 
   return (
@@ -22,9 +22,7 @@ export default memo(function CYThemeCover(props) {
         </div>
       </div>
       <div className='cover-bottom text-nowrap'>{info.name}</div>
-      <div className='cover-source'>
-        {info.copywriter ? `by ${info.copywriter}` : null}
-      </div>
+      <div className='cover-source'>{info.copywriter ? `by ${info.copywriter}` : null}</div>
     </ThemeCoverWrapper>
   )
 })

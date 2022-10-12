@@ -1,6 +1,7 @@
 import React, { memo, Fragment } from 'react'
 
 import { footerLinks, footerImages } from '@/services/local-data'
+
 import { AppFooterWrapper, FooterLeft, FooterRight } from './style'
 
 const CYAppFooter = memo(() => {

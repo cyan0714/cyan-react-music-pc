@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 
 import { HeaderWrapper } from './style'
 
-export default memo(function CYThemeHeaderNormal(props) {
+export default memo(props => {
   const { title, text } = props
 
   return (

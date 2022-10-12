@@ -1,10 +1,27 @@
-import React, { memo } from 'react'
+// third lib
+import React, { memo, useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
+// third components
+
+// utils
+
+// api
+
+// local components
 import { HeaderWrapper } from './style'
 
-const CYThemeHeaderSmall = memo(function (props) {
+export default memo(props => {
+  // props
   const { title, more } = props
+
+  // state-hooks
+
+  // redux-hooks
+  const dispatch = useDispatch()
+
+  // others
 
   return (
     <HeaderWrapper>
@@ -21,4 +38,4 @@ CYThemeHeaderSmall.propTypes = {
   more: PropTypes.string,
 }
 
-export default CYThemeHeaderSmall
+
