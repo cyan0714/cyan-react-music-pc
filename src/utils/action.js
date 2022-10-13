@@ -1,16 +1,12 @@
 import { getSongDetail, getLyric } from '@/services/player'
-import { getSongCategory, getSongCategoryList } from '@/services/songs'
 import {
   setCurrentSongIndex,
   setCurrentSong,
   setPlayList,
   setLyrics,
 } from '@/pages/player/store/slice'
-import { setCategory, setCategorySongs } from '@/pages/discover/c-pages/songs/store/slice'
 
 import { parseLyric } from './lyric-parse'
-import { PER_PAGE_NUMBER } from './constants'
-import { handleSongsCategory } from '@/utils/handle-data'
 
 export const changePlaySongAction = tag => {
   return (dispatch, getState) => {
@@ -79,23 +75,5 @@ export const getSongDetailAction = ids => {
   }
 }
 
-export const getSongList = page => {
-  return (dispatch, getState) => {
-    // 1.获取currentCategory
-    const name = getState().songs.currentCategory
 
-    // 2.获取数据
-    getSongCategoryList(name, page * PER_PAGE_NUMBER).then(res => {
-      dispatch(setCategorySongs(res))
-    })
-  }
-}
 
-export const getCategory = () => {
-  return dispatch => {
-    getSongCategory().then(res => {
-      const categoryData = handleSongsCategory(res)
-      dispatch(setCategory(categoryData))
-    })
-  }
-}

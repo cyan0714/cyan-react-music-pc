@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { PER_PAGE_NUMBER } from '@/utils/constants'
+import { handleSongsCategory } from '@/utils/handle-data'
+
+import { getSongCategory, getSongCategoryList } from '@/services/songs'
+
 const initialState = {
   category: [],
   currentCategory: "全部",
@@ -21,5 +26,26 @@ export const songsSlice = createSlice({
     }
   },
 })
+
+export const getSongList = page => {
+  return (dispatch, getState) => {
+    // 1.获取currentCategory
+    const name = getState().songs.currentCategory
+
+    // 2.获取数据
+    getSongCategoryList(name, page * PER_PAGE_NUMBER).then(res => {
+      dispatch(songsSlice.actions.setCategorySongs(res))
+    })
+  }
+}
+
+export const getCategory = () => {
+  return dispatch => {
+    getSongCategory().then(res => {
+      const categoryData = handleSongsCategory(res)
+      dispatch(songsSlice.actions.setCategory(categoryData))
+    })
+  }
+}
 
 export const { setCategory, setCurrentCategory, setCategorySongs } = songsSlice.actions
