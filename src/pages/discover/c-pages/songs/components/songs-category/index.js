@@ -1,8 +1,7 @@
 import React, { memo } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 
-import { setCurrentCategory } from '../../store/slice'
-import { getSongList } from '@/utils/action'
+import { setCurrentCategory, getSongList } from '../../store/slice'
 
 import { CategoryWrapper } from './style'
 

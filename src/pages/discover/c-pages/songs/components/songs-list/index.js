@@ -2,7 +2,7 @@ import React, { useState, memo } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 
 import { PER_PAGE_NUMBER } from '@/utils/constants'
-import { getSongList } from '@/utils/action'
+import { getSongList } from '../../store/slice'
 
 import CYThemeCover from '@/components/theme-cover'
 import CYPagination from '@/components/pagination'
