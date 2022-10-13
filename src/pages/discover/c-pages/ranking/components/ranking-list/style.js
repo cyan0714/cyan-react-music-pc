@@ -76,12 +76,19 @@ export const RankingListWrapper = styled.div`
           .play {
             width: 17px;
             height: 17px;
-            background-position: 0 -103px;
+            background-position: 0 -128px; 
             cursor: pointer;
+            &:hover {
+              background-position: -20px -128px;
+            }
           }
 
           .name {
             margin-left: 10px;
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
       }
