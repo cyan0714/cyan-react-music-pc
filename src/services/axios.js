@@ -5,7 +5,8 @@ export default function request(option) {
 		const instance = originAxios.create({
 			// baseURL: 'https://www.autumnfish.cn/',
       // baseURL: 'http://123.207.32.32:9001/',
-      baseURL: 'http://localhost:3000',
+      // baseURL: 'http://localhost:3000',
+      baseURL: 'https://www.lghb.top/',
       timeout: 10000,
 		});
 
