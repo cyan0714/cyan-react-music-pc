@@ -7,6 +7,7 @@ export default function request(option) {
       // baseURL: 'http://123.207.32.32:9001/',
       // baseURL: 'http://localhost:3000',
       baseURL: 'https://www.lghb.top/',
+      withCredentials: true, // 请求带上 cookie
       timeout: 10000,
 		});
 

@@ -19,7 +19,6 @@ export default memo(props => {
     }),
     shallowEqual
     )
-  console.log('categories: ', categories);
 
   const page = Math.ceil(categories.length / PAGE_SIZE) || 1
 

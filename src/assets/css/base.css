@@ -79,7 +79,7 @@ button {
   background: url(../imgs/sprite_cover.png) no-repeat -145px -57px;
 }
 
-.ant-message .ant-message-notice-content {
+.lyric-message .ant-message-notice-content {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);

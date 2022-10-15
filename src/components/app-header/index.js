@@ -11,6 +11,7 @@ import { searchKeywords } from '@/services/common'
 import { headerLinks } from '@/services/local-data'
 
 import { AppHeaderWrapper, HeaderLeft, HeaderRight } from './style'
+import LoginModal from '../login-modal'
 
 const CYAppHeader = memo(() => {
   const [songs, setSongs] = useState([])
@@ -96,7 +97,7 @@ const CYAppHeader = memo(() => {
             prefix={<SearchOutlined />}
           />
           <div className='center'>创作者中心</div>
-          <div className=''>登录</div>
+          <LoginModal />
           <div className='search-result-wrapper shadow'>{content}</div>
         </HeaderRight>
       </div>
