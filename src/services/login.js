@@ -9,7 +9,6 @@ export function getQrCode() {
 
 // 二维码生成
 export function getQrCodeImg(key) {
-  // console.log('key: ', key);
   return request({
     url: `/login/qr/create?key=${key}&timestamp=${new Date().getTime()}&qrimg=true`,
   });

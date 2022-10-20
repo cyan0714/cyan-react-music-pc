@@ -6,11 +6,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Modal, message, Result, Avatar } from 'antd'
 
 // utils
-import { setIsLogin, setUserProfile } from '@/store/user-slice'
+import { setIsLogin } from '@/store/user-slice'
 
 // api
 import { getQrCode, getQrCodeImg, getQrCodeStatus } from '@/services/login'
-import { getUserDetail, getUserInfo, getUserPlaylist } from '@/services/user';
 
 // local components
 import { LoginModalWrapper } from './style'
@@ -24,8 +23,6 @@ export default memo(props => {
   const [qrCodeImg, setQrCodeImg] = useState('')
   const [statusCode, setStatusCode] = useState(0) // 800(二维码已过期), 801(等待扫码), 802(扫码成功), 803(授权登录成功)
   const [isLoadingQrCodeImg, setIsLoadingQrCodeImg] = useState(true)
-  const [userId, setUserId] = useState('')
-  const [avatarUrl, setAvatarUrl] = useState('')
 
   let timer = ''
   const loopGetQrCodeStatus = key => {
@@ -38,10 +35,6 @@ export default memo(props => {
         clearInterval(timer)
         message.success('授权登录成功')
         setIsModalOpen(false)
-        getUserInfo().then(res => {
-          setUserId(res.profile.userId)
-          setAvatarUrl(res.profile.avatarUrl)
-        })
         localStorage.isLogin = true
         dispatch(setIsLogin(true))
         timer = undefined
@@ -79,53 +72,15 @@ export default memo(props => {
     isLogin: state.user.isLogin,
     userProfile: state.user.userProfile,
   }))
-  useEffect(() => {
-    console.log('isLogin改变了', isLogin);
-    if (isLogin) {
-      getUserProfile()
-    }
-  }, [isLogin])
-
-  // 获取用户详情数据
-  const getUserDetailInfo = (uid) => {
-    getUserDetail(uid).then(res => {
-      console.log('获取用户详情数据',res);
-      if (res.code === 200) {
-        dispatch(setUserProfile(res))
-        localStorage.userProfile = JSON.stringify(res)
-      }
-    })
-  }
-
-  // 获取用户歌单
-  const getUserPlayListInfo = (uid) => {
-    getUserPlaylist(uid).then(res => {
-      console.log('歌单', res);
-    })
-  }
-  // 获取用户账号数据
-  const getUserProfile = () => {
-    // 如果已经设置过,则从 store 读取 userId
-    if (userProfile.profile?.userId) {
-      getUserDetailInfo(userProfile.profile.userId)
-      getUserPlayListInfo(userProfile.profile.userId)
-    } else {
-      getUserInfo().then(res => {
-        console.log('获取用户账号数据', res);
-        getUserDetailInfo(res.profile.userId)
-        getUserPlayListInfo(res.profile.userId)
-      })
-    }
-  }
 
   return (
     <LoginModalWrapper>
-      {!userId && (
+      {!isLogin && (
         <div className='txt' onClick={showModal}>
           登录
         </div>
       )}
-      {userId && <Avatar src={avatarUrl} />}
+      {isLogin && <Avatar src={userProfile.profile?.avatarUrl} />}
       {isModalOpen && (
         <Modal title='登录' getContainer={false} open={isModalOpen}>
           {statusCode !== 802 && (

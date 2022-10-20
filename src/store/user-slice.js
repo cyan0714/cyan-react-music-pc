@@ -11,6 +11,7 @@ const transformState = (key, defaultVal, parse = true) => {
 const initialState = {
   isLogin: transformState('isLogin', false),
   userProfile: {},
+  allSongList: []
 }
 
 export const userSlice = createSlice({
@@ -22,6 +23,9 @@ export const userSlice = createSlice({
     },
     setUserProfile(state, action) {
       state.userProfile = action.payload
+    },
+    setAllSongList(state, action) {
+      state.allSongList = action.payload
     },
   },
 })
@@ -36,4 +40,4 @@ export const userSlice = createSlice({
 //   }
 // }
 
-export const { setIsLogin, setUserProfile } = userSlice.actions
+export const { setIsLogin, setUserProfile, setAllSongList } = userSlice.actions
