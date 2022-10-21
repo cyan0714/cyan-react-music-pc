@@ -7,6 +7,7 @@ import { rankingSlice } from '@/pages/discover/c-pages/ranking/store/slice'
 import { djradioSlice } from '@/pages/discover/c-pages/djradio/store/slice'
 import { playerSlice } from '@/pages/player/store/slice'
 import { userSlice } from './user-slice'
+import { mineSlice } from '@/pages/mine/store/slice'
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     ranking: rankingSlice.reducer,
     djradio: djradioSlice.reducer,
     player: playerSlice.reducer,
-    user: userSlice.reducer
+    user: userSlice.reducer,
+    mine: mineSlice.reducer,
   },
 })
 

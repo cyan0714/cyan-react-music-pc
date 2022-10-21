@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Collapse } from 'antd'
 
 // utils
+import { setCurrentPlayListObj } from '../../store/slice'
 
 // api
 
@@ -27,13 +28,14 @@ export default memo(props => {
     userProfile: state.user.userProfile,
     allSongList: state.user.allSongList,
   }))
+
   // others
   const mySingers = 1
   const myVideos = 1
   const myDJs = 1
   const songListItem = item => {
     return (
-      <div className='flex mb-2 px-4 py-0.5 cursor-pointer hover:bg-slate-100'>
+      <div onClick={() => dispatch(setCurrentPlayListObj(item))} className='flex mb-2 px-4 py-0.5 cursor-pointer hover:bg-slate-100'>
         <img src={item?.coverImgUrl} alt='' className='w-10 h-10' />
         <div className='flex flex-col justify-between ml-2 w-40'>
           <span className='text-xs single-row-ellip'>{item?.name}</span>
