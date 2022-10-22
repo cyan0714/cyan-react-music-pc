@@ -8,7 +8,7 @@ import CYThemeHeaderSong from '@/components/theme-header-song'
 import { RankingListWrapper } from './style'
 
 export default memo(props => {
-  const state = useSelector(
+  const {playList} = useSelector(
     state => ({
       playList: state.ranking.playList,
     }),
@@ -17,7 +17,7 @@ export default memo(props => {
 
   const dispatch = useDispatch()
 
-  const tracks = state.playList?.tracks || []
+  const tracks = playList?.tracks || []
 
   const playMusic = id => {
     dispatch(getSongDetailAction(id))
@@ -25,7 +25,7 @@ export default memo(props => {
 
   return (
     <RankingListWrapper>
-      <CYThemeHeaderSong />
+      <CYThemeHeaderSong trackCount={playList?.trackCount} playCount={playList?.playCount} />
       <div className='play-list'>
         <table>
           <thead>

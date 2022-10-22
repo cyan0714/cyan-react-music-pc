@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 5px;
+  padding: 0 20px 5px;
   border-bottom: 2px solid #c20c0c;
 
   .left {

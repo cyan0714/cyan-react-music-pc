@@ -3,15 +3,15 @@ import { useDispatch } from 'react-redux'
 
 import CYPlayList from './components/play-list'
 import CYMyMusicHeader from './components/play-header'
-// import CYMyMusicList from './components/ranking-list'
+import CYMyMusicList from './components/song-list'
 import { MyMusicWrapper, MyMusicLeft, MyMusicRight } from './style'
 
 export default memo(props => {
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  // useEffect(() => {
     // dispatch(getTops())
-  }, [dispatch])
+  // }, [dispatch])
 
   return (
     <MyMusicWrapper className='wrap-v2'>
@@ -20,7 +20,7 @@ export default memo(props => {
       </MyMusicLeft>
       <MyMusicRight>
         <CYMyMusicHeader />
-        {/* <CYMyMusicList /> */}
+        <CYMyMusicList />
       </MyMusicRight>
     </MyMusicWrapper>
   )
