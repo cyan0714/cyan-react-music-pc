@@ -46,7 +46,7 @@ export const OperationBarWrapper = styled.div`
   .item {
     display: inline-block;
     height: 31px;
-    margin-right: 6px;
+    margin-right: 7px;
     padding-right: 5px;
     background-position: right -1020px;
     
