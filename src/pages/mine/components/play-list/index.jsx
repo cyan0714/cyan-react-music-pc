@@ -17,18 +17,25 @@ export default memo(props => {
   // props
 
   // state-hooks
-
-  // useEffect(() => {
-
-  // }, [])
+  const [myCreatePlayList, setMyCreatePlayList] = useState([])
+  const [collectPlayList, setCollectPlayList] = useState([])
 
   // redux-hooks
   const dispatch = useDispatch()
 
-  const { userProfile, allSongList } = useSelector(state => ({
-    userProfile: state.user.userProfile,
-    allSongList: state.user.allSongList,
-  }),shallowEqual)
+  const { userProfile, allSongList } = useSelector(
+    state => ({
+      userProfile: state.user.userProfile,
+      allSongList: state.user.allSongList,
+    }),
+    shallowEqual
+  )
+  useEffect(() => {
+    const { myCreatePlayList = [], collectPlayList = [] } = allSongList.length !== 0 && classifySongsList(allSongList)
+    setMyCreatePlayList(myCreatePlayList)
+    setCollectPlayList(collectPlayList)
+    dispatch(setCurrentPlayListObj(myCreatePlayList[0]))
+  }, [allSongList])
 
   // others
   const mySingers = 1
@@ -36,7 +43,10 @@ export default memo(props => {
   const myDJs = 1
   const songListItem = item => {
     return (
-      <div key={item?.id} onClick={() => dispatch(setCurrentPlayListObj(item))} className='flex mb-2 px-4 py-0.5 cursor-pointer hover:bg-slate-100'>
+      <div
+        key={item?.id}
+        onClick={() => dispatch(setCurrentPlayListObj(item))}
+        className='flex mb-2 px-4 py-0.5 cursor-pointer hover:bg-slate-100'>
         <img src={item?.coverImgUrl} alt='' className='w-10 h-10' />
         <div className='flex flex-col justify-between ml-2 w-40'>
           <span className='text-xs single-row-ellip'>{item?.name}</span>
@@ -45,13 +55,11 @@ export default memo(props => {
       </div>
     )
   }
-  const clickFirstSongListItem = (item) => {
-    dispatch(setCurrentPlayListObj(item))
-  }
+  
   const classifySongsList = playlist => {
     return playlist.reduce(
       (prev, currentValue, index) => {
-        if (currentValue.creator.userId === userProfile.profile.userId) {
+        if (currentValue.creator?.userId === userProfile.profile?.userId) {
           prev.myCreatePlayList.push(currentValue)
         } else {
           prev.collectPlayList.push(currentValue)
@@ -61,13 +69,11 @@ export default memo(props => {
       { myCreatePlayList: [], collectPlayList: [] }
     )
   }
-  let { myCreatePlayList = [], collectPlayList = [] } = allSongList.length !== 0 && classifySongsList(allSongList)
-  myCreatePlayList.length > 0 && clickFirstSongListItem(myCreatePlayList[0])
   const { Panel } = Collapse
-  
+
   return (
     <SongListLeftWrapper>
-      <Collapse defaultActiveKey={['1']} >
+      <Collapse defaultActiveKey={['1']}>
         <Panel header='创建的歌单' key='1'>
           {myCreatePlayList?.map(item => songListItem(item))}
         </Panel>

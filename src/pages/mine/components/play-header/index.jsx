@@ -30,12 +30,12 @@ export default memo(props => {
       <div className="ml-4">
         <div className='flex items-center mb-2'>
           <i className='sprite_icon2 w-16 h-6 inline-block bg-[left_0_top_-243px]'></i>
-          <span className='text-lg'>{currentPlayListObj.name}</span>
+          <span className='text-lg'>{currentPlayListObj?.name}</span>
         </div>
         <div className="mb-4 flex items-center">
-          <img className="w-10 h-10 rounded-full mr-2" src={currentPlayListObj.creator?.avatarUrl} alt='' />
-          <span className="text-blue-600 mr-2">{currentPlayListObj.creator?.nickname}</span>
-          <span className="text-stone-400">{dayjs(currentPlayListObj.createTime).format('YYYY-MM-DD HH:mm:ss')} 创建</span>
+          <img className="w-10 h-10 rounded-full mr-2" src={currentPlayListObj?.creator?.avatarUrl} alt='' />
+          <span className="text-blue-600 mr-2">{currentPlayListObj?.creator?.nickname}</span>
+          <span className="text-stone-400">{dayjs(currentPlayListObj?.createTime).format('YYYY-MM-DD HH:mm:ss')} 创建</span>
         </div>
         <CYSongOperationBar
           favorTitle='收藏'

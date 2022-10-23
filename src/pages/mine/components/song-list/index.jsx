@@ -42,13 +42,13 @@ export default memo(props => {
   const fetchPlaylistAllDetail = offset => {
     setIsLoading(true)
     getPlaylistAllDetail({
-      id: currentPlayListObj.id,
+      id: currentPlayListObj?.id,
       limit: 20,
       offset: offset || 0,
     }).then(res => {
       setIsLoading(false)
       setSongs(res.songs)
-      setTotal(currentPlayListObj.trackCount)
+      setTotal(currentPlayListObj?.trackCount)
     })
   }
   const onPageChange = (page, pageSize) => {
@@ -80,7 +80,7 @@ export default memo(props => {
             <tbody>
               {songs?.map((item, index) => {
                 return (
-                  <tr className='' key={item.id}>
+                  <tr className='' key={item?.id}>
                     <td>
                       <div className='rank-num'>
                         <span className='num'>{index + 1}</span>
@@ -91,13 +91,13 @@ export default memo(props => {
                         <span
                           className='play sprite_table'
                           onClick={() =>
-                            dispatch(getSongDetailAction(item.id))
+                            dispatch(getSongDetailAction(item?.id))
                           }></span>
-                        <span className='name'>{item.name}</span>
+                        <span className='name'>{item?.name}</span>
                       </div>
                     </td>
-                    <td>{formatMinuteSecond(item.dt)}</td>
-                    <td>{item.ar[0].name}</td>
+                    <td>{formatMinuteSecond(item?.dt)}</td>
+                    <td>{item?.ar[0]?.name}</td>
                   </tr>
                 )
               })}
