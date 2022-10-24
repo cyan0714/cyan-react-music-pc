@@ -9,7 +9,7 @@ import CYThemeHeaderPlayer from '@/components/theme-header-player'
 import CYPagination from '@/components/pagination'
 import { CommentWrapper, EditComment } from './style'
 
-export default memo(function CYPlayerComment() {
+export default memo(() => {
   const [comments, setComments] = useState([])
   const [total, setTotal] = useState(0)
   const [currentPage, setCurrentPage] = useState(1);

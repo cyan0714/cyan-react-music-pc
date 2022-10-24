@@ -80,7 +80,7 @@ export default memo(props => {
             <tbody>
               {songs?.map((item, index) => {
                 return (
-                  <tr className='' key={item?.id}>
+                  <tr key={item?.id}>
                     <td>
                       <div className='rank-num'>
                         <span className='num'>{index + 1}</span>
@@ -88,11 +88,7 @@ export default memo(props => {
                     </td>
                     <td>
                       <div className='song-name'>
-                        <span
-                          className='play sprite_table'
-                          onClick={() =>
-                            dispatch(getSongDetailAction(item?.id))
-                          }></span>
+                        <span className='play sprite_table' onClick={() => dispatch(getSongDetailAction(item?.id))}></span>
                         <span className='name'>{item?.name}</span>
                       </div>
                     </td>

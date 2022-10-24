@@ -7,7 +7,7 @@ import { getSizeImage } from '@/utils/format-utils'
 import CYSongOperationBar from '@/components/song-operation-bar'
 import { InfoWrapper, InfoLeft, InfoRight } from './style'
 
-export default memo(function CYPlayerInfo() {
+export default memo(() => {
   const [isSpread, setIsSpread] = useState(false)
 
   const { isPlaying, currentSong, lyrics } = useSelector(
@@ -18,6 +18,7 @@ export default memo(function CYPlayerInfo() {
     }),
     shallowEqual
   )
+
   const totalLyricCount = isSpread ? lyrics.length : 13
 
   return (
@@ -39,15 +40,11 @@ export default memo(function CYPlayerInfo() {
         </div>
         <div className='singer'>
           <span className='label'>歌手：</span>
-          <a href='/#' className='name'>
-            {currentSong.ar[0].name}
-          </a>
+          <a href='/#' className='name'>{currentSong.ar[0].name}</a>
         </div>
         <div className='album'>
           <span className='label'>所属专辑：</span>
-          <a href='/#' className='name'>
-            {currentSong.al.name}
-          </a>
+          <a href='/#' className='name'>{currentSong.al.name}</a>
         </div>
 
         <CYSongOperationBar
@@ -60,11 +57,7 @@ export default memo(function CYPlayerInfo() {
         <div className='lyric'>
           <div className='lyric-info'>
             {lyrics.slice(0, totalLyricCount).map((item, index) => {
-              return (
-                <p key={item.time} className='text'>
-                  {item.content}
-                </p>
-              )
+              return <p key={item.time} className='text'>{item.content}</p>
             })}
           </div>
           <button

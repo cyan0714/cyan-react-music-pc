@@ -7,7 +7,7 @@ import { getSizeImage } from '@/utils/format-utils';
 import { PlayerSongsWrapper } from './style';
 import CYThemeHeaderPlayer from '@/components/theme-header-player';
 
-export default memo(function CYPlayerSongs() {
+export default memo(() => {
   const { currentSong, simiPlaylist } = useSelector(state => ({
     currentSong: state.player.currentSong,
     simiPlaylist: state.player.simiPlaylist,

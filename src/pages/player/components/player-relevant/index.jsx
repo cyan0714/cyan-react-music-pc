@@ -27,12 +27,8 @@ export default memo(function CYRelevant() {
             return (
               <div className="song-item" key={item.id}>
                 <div className="info">
-                  <div className="title">
-                    <a href="#/">{item.name}</a>
-                  </div>
-                  <div className="artist">
-                    <a href="#/">{item.artists[0].name}</a>
-                  </div>
+                  <div className="title"><a href="#/">{item.name}</a></div>
+                  <div className="artist"><a href="#/">{item.artists[0].name}</a></div>
                 </div>
                 <div className="operate">
                   <button className="item sprite_icon3 play"></button>

@@ -1,6 +1,7 @@
 import React, { memo, Suspense } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { Provider } from 'react-redux'
+
 import store from './store'
 
 import CYAppHeader from '@/components/app-header'

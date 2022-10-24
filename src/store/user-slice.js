@@ -30,14 +30,4 @@ export const userSlice = createSlice({
   },
 })
 
-
-
-// export const getTops = () => {
-//   return dispatch => {
-//     getTopList().then(res => {
-//       dispatch(rankingSlice.actions.setTopList(res.list));
-//     })
-//   }
-// }
-
 export const { setIsLogin, setUserProfile, setAllSongList } = userSlice.actions

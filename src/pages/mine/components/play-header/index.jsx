@@ -22,6 +22,7 @@ export default memo(props => {
     currentPlayListObj: state.mine.currentPlayListObj,
   }))
   const dispatch = useDispatch()
+
   // others
 
   return (
