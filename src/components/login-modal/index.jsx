@@ -82,7 +82,7 @@ export default memo(props => {
       )}
       {isLogin && <Avatar src={userProfile.profile?.avatarUrl} />}
       {isModalOpen && (
-        <Modal title='登录' getContainer={false} open={isModalOpen} onCancel={() => setIsModalOpen(false)}>
+        <Modal title='登录' getContainer={false} open={isModalOpen} onCancel={() => setIsModalOpen(false)} destroyOnClose>
           {statusCode !== 802 && (
             <div>
               <p className='text-lg text-center mb-2'>扫码登录</p>
