@@ -77,12 +77,12 @@ export default memo(props => {
     <LoginModalWrapper>
       {!isLogin && (
         <div className='txt' onClick={showModal}>
-          登录
+          {props.loginBtn ? props.loginBtn : '登录'}  
         </div>
       )}
       {isLogin && <Avatar src={userProfile.profile?.avatarUrl} />}
       {isModalOpen && (
-        <Modal title='登录' getContainer={false} open={isModalOpen}>
+        <Modal title='登录' getContainer={false} open={isModalOpen} onCancel={() => setIsModalOpen(false)}>
           {statusCode !== 802 && (
             <div>
               <p className='text-lg text-center mb-2'>扫码登录</p>

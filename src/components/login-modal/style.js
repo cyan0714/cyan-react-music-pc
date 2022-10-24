@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const LoginModalWrapper = styled.div`
   .txt {
+    text-align: center;
     cursor: pointer;
   }
   .ant-modal-header {

@@ -62,6 +62,14 @@
 
 ![歌曲播放页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/player-page.png)
 
+我的音乐页面：
+
+* 支持扫码登录
+* 我创建的歌单
+* 我收藏的歌单
+
+![我的音乐页面](https://raw.githubusercontent.com/cyan0714/cyan-react-music-pc/master/src/assets/imgs/readme/my-created-list.png)
+
 ## 项目规范
 * 1.文件夹、文件名称统一小写、多个单词以连接符（-）连接；
 * 2.JavaScript 变量名称采用小驼峰标识，常量全部使用大写字母，组件采用大驼峰；
