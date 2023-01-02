@@ -12,7 +12,7 @@
 
 * 该项目是使用 React18 + Hooks + Redux Toolkit + React Router v6 编写的云音乐PC Web项目
 * 项目中的样式代码大部分来自[coderwhy/hy-react-web-music](https://github.com/coderwhy/hy-react-web-music)
-* 接口来源于开源的接口，目前的接口是通过 clone [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 项目后本地起服务调用的，后续考虑将接口部署到服务器
+* 项目已部署到阿里云服务器[http://119.23.214.219:80](http://119.23.214.219:80), 欢迎访问~
 
 ## 目前已完成的功能：
 
