@@ -110,9 +110,10 @@ const CYAppHeader = memo(() => {
   const content = (
     <div>
       {songs.map((song, index) => {
+        console.log('sonmg', song);
         return (
           <p key={index} onClick={() => playMusic(song.id)}>
-            <span>{song.name}</span> - <span>{song.ar[0].name || ''}</span>
+            <span>{song.name}</span> - <span>{song?.artists[0]?.name || ''}</span>
           </p>
         )
       })}
