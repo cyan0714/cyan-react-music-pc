@@ -12,7 +12,7 @@
 
 * 该项目是使用 React18 + Hooks + Redux Toolkit + React Router v6 编写的云音乐PC Web项目
 * 项目中的样式代码大部分来自[coderwhy/hy-react-web-music](https://github.com/coderwhy/hy-react-web-music)
-* 项目已部署到阿里云服务器[http://119.23.214.219:80](http://119.23.214.219:80), 欢迎访问~
+* 项目已部署到腾讯云服务器[http://175.178.81.148:3000](http://175.178.81.148:3000), 欢迎访问~
 
 ## 目前已完成的功能：
 
